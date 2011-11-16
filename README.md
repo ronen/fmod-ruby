@@ -32,10 +32,18 @@ To use this Ruby library, you must have the FMOD on you machine. [Go get it](htt
 
 That being said:
 
-  gem install ruby-fmod
+  gem install fmod-ruby
+
+or, in a Gemfile
+
+  gem "fmod-ruby", :require => "fmod"
+
+
   
 Usage
 =====
+
+  require "fmod"
 
   FMOD.init
   sound = FMOD::Sound.new(file)
