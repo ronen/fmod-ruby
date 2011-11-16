@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["ronen@barzel.org"]
   gem.description   = %q{Wrapper for the FMOD audio library}
   gem.summary       = %q{Wrapper for the FMOD audio library}
-  gem.homepage      = "git://github.com/ronen/fmod-ruby.git"
+  gem.homepage      = "https://github.com/ronen/fmod-ruby"
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.files         = `git ls-files`.split("\n")
