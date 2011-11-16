@@ -4,12 +4,7 @@ module FMOD
     include Constants
     include Enums
     
-    case RUBY_PLATFORM
-    when /darwin/i
-      ffi_lib '/Developer/FMOD Programmers API Mac/api/lib/libfmodex.dylib'
-    else
-      raise "Sorry, #{RUBY_PLATFORM} is not supported yet."
-    end
+    ffi_lib 'libfmodex'
     
     typedef :int,  :FMOD_BOOL                       
     typedef :uint, :FMOD_TIMEUNIT
