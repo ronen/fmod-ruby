@@ -20,6 +20,7 @@ puts "done in #{end_time} seconds."
 sound.play
 puts FMOD.system.version
 puts sound.channel.frequency
+puts "sound length=#{sound.length}ms"
 sleep 2
 # sound.channel.frequency = 11050.0
 # puts sound.channel.frequency

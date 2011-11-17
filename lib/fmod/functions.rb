@@ -69,6 +69,9 @@ module FMOD
     # FMOD_RESULT FMOD_Channel_SetFrequency(FMOD_CHANNEL *  channel, float  frequency);    
     attach_function :FMOD_Channel_SetFrequency, [:pointer, :float], FMOD_RESULT  
 
+    # FMOD_RESULT F_API FMOD_Sound_GetLength               (FMOD_SOUND *sound, unsigned int *length, FMOD_TIMEUNIT lengthtype);
+    attach_function :FMOD_Sound_GetLength, [:pointer, :pointer, :FMOD_TIMEUNIT], FMOD_RESULT  
+
     
     def error_check(result)
       raise "FMOD error! #{result}" if result != :FMOD_OK
