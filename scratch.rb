@@ -1,4 +1,7 @@
-require 'lib/fmod'
+require 'rubygems'
+require 'bundler'
+Bundler.require
+require 'fmod'
 
 start_time = Time.now
 puts "initializing FMOD ..."
