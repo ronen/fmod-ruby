@@ -31,10 +31,14 @@ module FMOD
     attach_function :FMOD_System_Create, [:pointer], FMOD_RESULT
     attach_function :FMOD_System_GetVersion, [:pointer, :pointer], FMOD_RESULT
     attach_function :FMOD_System_Init, [:pointer, :int, :int, :pointer], FMOD_RESULT
+    attach_function :FMOD_System_Update, [:pointer], FMOD_RESULT
+    attach_function :FMOD_System_Release, [:pointer], FMOD_RESULT
+    attach_function :FMOD_System_GetDSPClock, [:pointer, :pointer, :pointer], FMOD_RESULT
+    attach_function :FMOD_System_SetSoftwareFormat, [:pointer, :int, FMOD_SOUND_FORMAT, :int, :int, FMOD_DSP_RESAMPLER], FMOD_RESULT
   
     attach_function :FMOD_System_CreateSound, [:pointer, :string, :int, :int, :pointer], FMOD_RESULT
     attach_function :FMOD_System_CreateStream, [:pointer, :string, :int, :int, :pointer], FMOD_RESULT
-    attach_function :FMOD_System_PlaySound, [:pointer, :int, :pointer, :int, :pointer], FMOD_RESULT
+    attach_function :FMOD_System_PlaySound, [:pointer, FMOD_CHANNELINDEX, :pointer, :int, :pointer], FMOD_RESULT
   
     # FMOD_RESULT FMOD_System_GetDriverInfo(FMOD_SYSTEM * system, int id, char * name, int namelen, FMOD_GUID * guid);
     # attach_function :FMOD_System_GetDriverInfo
@@ -47,6 +51,13 @@ module FMOD
 
     # FMOD_RESULT FMOD_System_GetSoftwareChannels(FMOD_SYSTEM * system, int * numsoftwarechannels);
     attach_function :FMOD_System_GetSoftwareChannels, [:pointer, :pointer], FMOD_RESULT
+
+    # FMOD_RESULT F_API FMOD_System_SetOutput              (FMOD_SYSTEM *system, FMOD_OUTPUTTYPE output);
+    attach_function :FMOD_System_SetOutput, [:pointer, FMOD_OUTPUTTYPE], FMOD_RESULT
+    
+    # FMOD_RESULT F_API FMOD_System_GetOutput              (FMOD_SYSTEM *system, FMOD_OUTPUTTYPE *output);
+    attach_function :FMOD_System_GetOutput, [:pointer, :pointer], FMOD_RESULT
+
 
     # FMOD_RESULT FMOD_Channel_IsPlaying(FMOD_CHANNEL *  channel, FMOD_BOOL *  isplaying);
     attach_function :FMOD_Channel_IsPlaying, [:pointer, :pointer], FMOD_RESULT
@@ -68,6 +79,13 @@ module FMOD
 
     # FMOD_RESULT FMOD_Channel_SetFrequency(FMOD_CHANNEL *  channel, float  frequency);    
     attach_function :FMOD_Channel_SetFrequency, [:pointer, :float], FMOD_RESULT  
+
+    # FMOD_RESULT FMOD_Channel_SetDelay(FMOD_CHANNEL *channel, FMOD_DELAYTYPE delaytype, unsigned int delayhi, unsigned int delaylo);
+    attach_function :FMOD_Channel_SetDelay, [:pointer, FMOD_DELAYTYPE, :int, :int], FMOD_RESULT
+
+    # FMOD_RESULT FMOD_Channel_GetDelay(FMOD_CHANNEL *channel, FMOD_DELAYTYPE delaytype, unsigned int *delayhi, unsigned int *delaylo);
+    attach_function :FMOD_Channel_GetDelay, [:pointer, FMOD_DELAYTYPE, :pointer, :pointer], FMOD_RESULT
+
 
     # FMOD_RESULT F_API FMOD_Sound_GetLength               (FMOD_SOUND *sound, unsigned int *length, FMOD_TIMEUNIT lengthtype);
     attach_function :FMOD_Sound_GetLength, [:pointer, :pointer, :FMOD_TIMEUNIT], FMOD_RESULT  

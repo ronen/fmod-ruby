@@ -12,14 +12,15 @@ module FMOD
 
     def length(unit = FMOD_TIMEUNIT_MS)
       FFI::MemoryPointer.new(:int) do |ptr|
-        error_check FMOD_Sound_GetLength(sound_ptr.read_pointer, ptr, FMOD_TIMEUNIT_MS)
+        error_check FMOD_Sound_GetLength(sound_ptr, ptr, FMOD_TIMEUNIT_MS)
         return ptr.read_int
       end
     end
     
-    def play
+    def play(opts={})
+      opts = opts.keyword_args(:paused)
       # FMOD_RESULT = FMOD_System_PlaySound(system, FMOD_CHANNEL_FREE, sound1, 0, &channel);
-      error_check FMOD_System_PlaySound(@system_pointer.read_pointer, FMOD_CHANNELINDEX[:FMOD_CHANNEL_FREE], sound_ptr.read_pointer, 0, @channel.pointer);
+      error_check FMOD_System_PlaySound(FMOD.system.pointer, :FMOD_CHANNEL_FREE, sound_ptr, opts.paused ? 1 : 0, @channel.pointer_addr);
       true
     end
 
@@ -28,12 +29,11 @@ module FMOD
     def sound_ptr
       return @sound_ptr if @sound_ptr
 
-      @sound_ptr = FFI::MemoryPointer.new(:pointer)
-      
+      @memory = FFI::MemoryPointer.new(:pointer)
       # FMOD_RESULT = FMOD_System_CreateSound(system, "drumloop.wav", FMOD_SOFTWARE, 0, &sound);
-      error_check FMOD_System_CreateSound(@system_pointer.read_pointer, @file, FMOD_DEFAULT, 0, sound_ptr);
+      error_check FMOD_System_CreateSound(@system_pointer, @file, FMOD_DEFAULT, 0, @memory);
 
-      @sound_ptr
+      @sound_ptr = @memory.read_pointer
     end
 
     

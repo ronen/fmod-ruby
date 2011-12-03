@@ -9,7 +9,9 @@ FMOD.init
 end_time = Time.new - start_time
 puts "done in #{end_time} seconds."
 
-file = (ARGV.empty?) ? "Kids.mp3" : ARGV[0]
+DIR = File.dirname(__FILE__)
+
+file = (ARGV.empty?) ? "#{DIR}/ComputerMagic.mp3" : ARGV[0]
 
 
 puts "initializing a sound ..."

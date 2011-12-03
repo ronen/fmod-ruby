@@ -16,4 +16,5 @@ Gem::Specification.new do |gem|
   gem.version       = Fmod::VERSION
 
   gem.add_dependency("ffi")
+  gem.add_dependency("hash_keyword_args")
 end
