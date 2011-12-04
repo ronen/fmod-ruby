@@ -24,4 +24,4 @@ puts "scheduling play..."
 sound1.play
 sound2.play
 puts "scheduled play.  now starting to sleep"
-sleep([sound1.length,sound2.length].max/1000)
+sleep ([sound1.length,sound2.length].max/1000.0).ceil

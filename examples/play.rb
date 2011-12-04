@@ -16,4 +16,4 @@ sound = FMOD::Sound.new(file)
 puts "#{file} length=#{sound.length}ms"
 sound.play
 puts "scheduled play.  now starting to sleep"
-sleep(sound.length/1000.0)
+sleep (sound.length/1000.0).ceil
