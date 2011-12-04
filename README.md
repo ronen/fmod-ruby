@@ -30,6 +30,12 @@ Testing
 
 No formal test suite yet.  However, the +examples/+ directory includes several examples that should all work.
 
+History
+=======
+
+* release 0.1.0 - added keyword options to System#initialize and whatnot to support offline wav creation (examples write.rb and contact.rb)
+
+* release 0.0.1 - initial gemification
   
 Usage
 =====
