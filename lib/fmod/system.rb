@@ -6,18 +6,20 @@ module FMOD
     attr_reader :sample_rate
         
     def initialize(opts={})
+      opts = opts.keyword_args(:output_wav,
+                               :sample_rate => 44100)
 
-      @sample_rate = opts[:sample_rate] || 44100
+      @sample_rate = opts.sample_rate
 
       @memory = FFI::MemoryPointer.new(:pointer)
       error_check FMOD_System_Create(@memory)  
       @pointer = @memory.read_pointer
 
       case
-      when opts[:output_wav]
+      when opts.output_wav
         error_check FMOD_System_SetOutput(@pointer, :FMOD_OUTPUTTYPE_WAVWRITER_NRT)
         error_check FMOD_System_SetSoftwareFormat(@pointer, sample_rate, :FMOD_SOUND_FORMAT_PCM16, 2, 6, :FMOD_DSP_RESAMPLER_LINEAR)
-        error_check FMOD_System_Init(@pointer, 100,  FMOD_INIT_STREAM_FROM_UPDATE, opts[:output_wav])
+        error_check FMOD_System_Init(@pointer, 100,  FMOD_INIT_STREAM_FROM_UPDATE, opts.output_wav)
       else
         error_check FMOD_System_Init(@pointer, 32, FMOD_INIT_NORMAL, nil)
       end
