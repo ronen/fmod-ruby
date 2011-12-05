@@ -75,6 +75,12 @@ module FMOD
       }
     end
 
+    def buffer_size
+      FFI::MemoryPointer.new(:int) { |size|
+        error_check FMOD_System_GetDSPBufferSize(@pointer, size, nil)
+        return @pointer.read_int
+      }
+    end
 
     def update
       error_check FMOD_System_Update(@pointer)

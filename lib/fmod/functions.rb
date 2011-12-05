@@ -34,6 +34,7 @@ module FMOD
     attach_function :FMOD_System_Update, [:pointer], FMOD_RESULT
     attach_function :FMOD_System_Release, [:pointer], FMOD_RESULT
     attach_function :FMOD_System_GetDSPClock, [:pointer, :pointer, :pointer], FMOD_RESULT
+    attach_function :FMOD_System_GetDSPBufferSize, [:pointer, :pointer, :pointer], FMOD_RESULT
     attach_function :FMOD_System_SetSoftwareFormat, [:pointer, :int, FMOD_SOUND_FORMAT, :int, :int, FMOD_DSP_RESAMPLER], FMOD_RESULT
   
     attach_function :FMOD_System_CreateSound, [:pointer, :string, :int, :int, :pointer], FMOD_RESULT
