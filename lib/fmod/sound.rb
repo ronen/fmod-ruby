@@ -24,6 +24,12 @@ module FMOD
       true
     end
 
+    def release
+      return unless @sound_ptr
+      error_check FMOD_Sound_Release(@sound_ptr)
+      @sound_ptr = nil
+    end
+
     private
 
     def sound_ptr

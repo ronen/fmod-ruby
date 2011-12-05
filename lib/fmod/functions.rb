@@ -92,6 +92,7 @@ module FMOD
 
     # FMOD_RESULT F_API FMOD_Sound_GetLength               (FMOD_SOUND *sound, unsigned int *length, FMOD_TIMEUNIT lengthtype);
     attach_function :FMOD_Sound_GetLength, [:pointer, :pointer, :FMOD_TIMEUNIT], FMOD_RESULT  
+    attach_function :FMOD_Sound_Release, [:pointer], FMOD_RESULT  
 
     
     def error_check(result)
