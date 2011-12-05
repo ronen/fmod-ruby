@@ -87,6 +87,8 @@ module FMOD
     # FMOD_RESULT FMOD_Channel_GetDelay(FMOD_CHANNEL *channel, FMOD_DELAYTYPE delaytype, unsigned int *delayhi, unsigned int *delaylo);
     attach_function :FMOD_Channel_GetDelay, [:pointer, FMOD_DELAYTYPE, :pointer, :pointer], FMOD_RESULT
 
+    attach_function :FMOD_Channel_SetVolume, [:pointer, :float], FMOD_RESULT
+
 
     # FMOD_RESULT F_API FMOD_Sound_GetLength               (FMOD_SOUND *sound, unsigned int *length, FMOD_TIMEUNIT lengthtype);
     attach_function :FMOD_Sound_GetLength, [:pointer, :pointer, :FMOD_TIMEUNIT], FMOD_RESULT  

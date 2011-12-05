@@ -78,5 +78,10 @@ module FMOD
         }
       }
     end
+
+    def set_volume(volume)
+      error_check FMOD_Channel_SetVolume(pointer, volume)
+    end
+
   end
 end
