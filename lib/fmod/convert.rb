@@ -15,5 +15,10 @@ module FMOD
       opts = opts.keyword_args(:sample_rate => FMOD.system.sample_rate) # samples per second
       ms * opts.sample_rate / 1000
     end
+
+    def self.samples_to_ms(samples, opts={})
+      opts = opts.keyword_args(:sample_rate => FMOD.system.sample_rate) # samples per second
+      (samples / opts.sample_rate) * 1000
+    end
   end
 end
