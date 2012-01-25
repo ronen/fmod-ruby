@@ -95,8 +95,10 @@ module FMOD
     attach_function :FMOD_Sound_Release, [:pointer], FMOD_RESULT  
 
     
-    def error_check(result)
-      raise "FMOD error! #{result}" if result != :FMOD_OK
+    def error_check(msg, *args)
+      if (result = send msg, *args) != :FMOD_OK
+        raise FMOD::Error, "Error in #{msg}(#{args.map(&:inspect).join(', ')}): #{result}"
+      end
     end
   end
 end

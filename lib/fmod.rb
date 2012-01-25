@@ -26,4 +26,7 @@ module FMOD
   def self.system_pointer
     @system.pointer
   end
+
+  class Error < ::RuntimeError
+  end
 end
