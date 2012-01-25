@@ -33,7 +33,8 @@ No formal test suite yet.  However, the +examples/+ directory includes several e
 History
 =======
 
-* release 0.3.0 - added FMOD::Error, more detailed error reporting
+* release 0.3.1 - cleaned up exception message
+* release 0.3.0 - added FMOD::Error, more detailed error reporting in exception message
 * release 0.2.0 - added Convert.samples_to_ms
 * release 0.1.1 - added Channel#set_volume, Sound#release
 * release 0.1.0 - added keyword options to System#initialize and whatnot to support offline wav creation (examples write.rb and contact.rb)
