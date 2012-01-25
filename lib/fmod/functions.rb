@@ -97,7 +97,7 @@ module FMOD
     
     def error_check(msg, *args)
       if (result = send msg, *args) != :FMOD_OK
-        raise FMOD::Error, "Error in #{msg}(#{args.map(&:inspect).join(', ')}): #{result}"
+        raise FMOD::Error, "#{result}: #{msg}(#{args.map{|arg| arg.respond_to?(:address) ? "0x%x" % arg.address : arg.inspect}.join(', ')})"
       end
     end
   end
